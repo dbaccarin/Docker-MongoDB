@@ -1,0 +1,17 @@
+
+name: mongodb-project               # group name
+services:
+  database:
+    image: mongo:latest
+    container_name: mongo-container
+    volumes:
+      - db-data:/data/db            # database where data will persist
+      - db-config:/data/configdb    # where MongoDB stores configuration files
+    ports:
+      - "27018:27017"               # external port : internal port
+      
+volumes:
+  db-data:
+    driver: local                   # drivers - where the directory is created
+  db-config:
+    driver: local
